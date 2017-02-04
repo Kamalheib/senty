@@ -23,24 +23,32 @@ Contact Information:
 Kamal Heib <kamalheib1@gmail.com>
 """
 
-from distutils.core import setup
 
-setup(
-    name='senty',
-    version='0.1',
-    description='Senty Project',
-    long_description='Senty is a python based project for testing network.',
-    license='GPL v2',
-    author='Kamal Heib, Slava Shwartsman',
-    author_email='kamalheib1@gmail.com, valyushash@gmail.com',
-    url='https://github.com/Kamalheib/senty',
-    packages=[
-        'senty',
-        'senty.rpc',
-        'senty.utils',
-        'senty.tests',
-        'senty.tests.blocks',
-        'senty.tools',
-        'senty.modules'
-    ]
-)
+class Block(object):
+    def __init__(self, logger):
+        self._logger = logger
+
+    def get_logger(self):
+        return self._logger
+
+    def run(self):
+        self.Logger.pr_dbg('--------=== Run stage - [ %s ] ===--------' % self.__class__.__name__)
+        self.run_bg()
+        return self.wait()
+
+    def init(self):
+        raise NotImplementedError()
+
+    def run_bg(self):
+        raise NotImplementedError()
+
+    def wait(self):
+        raise NotImplementedError()
+
+    def kill(self):
+        raise NotImplementedError()
+
+    def restore(self):
+        raise NotImplementedError()
+
+    Logger = property(get_logger)
