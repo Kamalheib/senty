@@ -42,5 +42,7 @@ setup(
         'senty.tests.blocks',
         'senty.tools',
         'senty.modules'
-    ]
+    ],
+    data_files=[('/lib/systemd/system/', ['senty/senty.service'])],
+    scripts=['senty/rpc/senty_rpc_server.py']
 )
