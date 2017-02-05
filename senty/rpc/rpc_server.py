@@ -24,6 +24,7 @@ Kamal Heib <kamalheib1@gmail.com>
 """
 
 import sys
+import socket
 from argparse import ArgumentParser
 from SimpleXMLRPCServer import SimpleXMLRPCServer
 
@@ -32,6 +33,33 @@ from senty.utils.execute import Execute
 
 
 class RPCServer(object):
+
+    def get_server_ip(self):
+        if not hasattr(self, '_ip'):
+            self.set_server_ip(None)
+        return self._ip
+
+    def set_server_ip(self, ip):
+        try:
+            if not ip:
+                self._ip = socket.gethostbyname(socket.gethostname())
+            else:
+                self._ip = ip
+        except Exception as e:
+            self.Logger.pr_err("Couldn't set server IP")
+            self.Logger.pr_err(e)
+
+    def get_port(self):
+        if not hasattr(self, '_port'):
+            self.set_port(None)
+        return self._port
+
+    def set_port(self, port):
+        if not port:
+            self._port = 8000
+        else:
+            self._port = int(port)
+
     def get_parser(self):
         if not hasattr(self, '_parser'):
             self._parser = ArgumentParser(self.__class__.__name__)
@@ -48,8 +76,13 @@ class RPCServer(object):
             rpc_server.register_instance(module)
 
     def get_server(self):
+        if self.server:
+            self.IP = self.server
+        if self.port:
+            self.Port = self.port
         if not hasattr(self, 'rpc_server'):
-            self._rpc_server = SimpleXMLRPCServer((self.server, self.port),
+            self.Logger.pr_info("Starting server at %s port %d" % (self.IP, self.Port))
+            self._rpc_server = SimpleXMLRPCServer((self.IP, self.Port),
                                                   logRequests=True,
                                                   allow_none=True)
             self._rpc_server.quit = False
@@ -61,12 +94,12 @@ class RPCServer(object):
                                  help='log message level',
                                  default='info',
                                  choices=['info', 'debug'])
-        self.Parser.add_argument('-s', '--server',
-                                 help='Server name/IP address',
-                                 required=True)
         self.Parser.add_argument('-p', '--port',
                                  help='Server port number',
                                  default=8000, type=int)
+        self.Parser.add_argument('-s', '--server',
+                                 help='Server name/IP address')
+
         self.Parser.parse_args(namespace=self, args=args)
 
     def execute(self, args):
@@ -74,8 +107,10 @@ class RPCServer(object):
         self.Logger.pr_info("Starting %s" % self.__class__.__name__)
         self.Server.serve_forever()
 
+    IP = property(get_server_ip, set_server_ip)
     Logger = property(get_logger)
     Parser = property(get_parser)
+    Port = property(get_port, set_port)
     Server = property(get_server)
 
 
