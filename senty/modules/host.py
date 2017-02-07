@@ -30,10 +30,11 @@ import xmlrpclib
 class Host(object):
     ERROR_KEYWORDS = r'(error|fail|synd|assert)'
 
-    def __init__(self, ip, logger, port=8000):
+    def __init__(self, ip, logger, port=8000, interfaces=[]):
         self._ip = ip
         self._logger = logger
         self._port = port
+        self._interfaces = interfaces
 
     def get_ip(self):
         return self._ip
@@ -43,6 +44,9 @@ class Host(object):
 
     def get_port(self):
         return self._port
+
+    def get_interfaces(self):
+        return self._interfaces
 
     def get_proxy_server(self):
         if not hasattr(self, "_proxy_server"):
@@ -101,4 +105,5 @@ class Host(object):
     IP = property(get_ip)
     Port = property(get_port)
     Logger = property(get_logger)
+    Interfaces = property(get_interfaces)
     ProxyServer = property(get_proxy_server)
