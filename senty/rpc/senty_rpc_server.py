@@ -34,31 +34,22 @@ from senty.utils.execute import Execute
 
 class RPCServer(object):
 
-    def get_server_ip(self):
+    def get_ip(self):
         if not hasattr(self, '_ip'):
-            self.set_server_ip(None)
-        return self._ip
-
-    def set_server_ip(self, ip):
-        try:
-            if not ip:
-                self._ip = socket.gethostbyname(socket.gethostname())
+            if not self.server:
+                try:
+                    self._ip = socket.gethostbyname(socket.gethostname())
+                except Exception, e:
+                    self.Logger.pr_err("Couldn't get server IP address")
+                    self.Logger.pr_err(e)
             else:
-                self._ip = ip
-        except Exception as e:
-            self.Logger.pr_err("Couldn't set server IP")
-            self.Logger.pr_err(e)
+                self._ip = self.server
+        return self._ip
 
     def get_port(self):
         if not hasattr(self, '_port'):
-            self.set_port(None)
+            self._port = self.port
         return self._port
-
-    def set_port(self, port):
-        if not port:
-            self._port = 8000
-        else:
-            self._port = int(port)
 
     def get_parser(self):
         if not hasattr(self, '_parser'):
@@ -76,10 +67,6 @@ class RPCServer(object):
             rpc_server.register_instance(module)
 
     def get_server(self):
-        if self.server:
-            self.IP = self.server
-        if self.port:
-            self.Port = self.port
         if not hasattr(self, 'rpc_server'):
             self.Logger.pr_info("Starting server at %s port %d" % (self.IP, self.Port))
             self._rpc_server = SimpleXMLRPCServer((self.IP, self.Port),
@@ -107,12 +94,11 @@ class RPCServer(object):
         self.Logger.pr_info("Starting %s" % self.__class__.__name__)
         self.Server.serve_forever()
 
-    IP = property(get_server_ip, set_server_ip)
+    IP = property(get_ip)
+    Port = property(get_port)
+    Server = property(get_server)
     Logger = property(get_logger)
     Parser = property(get_parser)
-    Port = property(get_port, set_port)
-    Server = property(get_server)
-
 
 if __name__ == '__main__':
     rpc_server = RPCServer()
