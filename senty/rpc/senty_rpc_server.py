@@ -79,7 +79,7 @@ class RPCServer(object):
     def parse_args(self, args):
         self.Parser.add_argument('-v', '--verbose',
                                  help='log message level',
-                                 default='info',
+                                 default='debug',
                                  choices=['info', 'debug'])
         self.Parser.add_argument('-p', '--port',
                                  help='Server port number',
