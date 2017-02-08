@@ -27,13 +27,14 @@ from senty.tests.blocks.traffic import Traffic
 
 
 class Ping(Traffic):
-    def __init__(self, logger, server, ip, args='-c 1'):
+    def __init__(self, logger, server, ip, is_ipv6=False, args='-c 1'):
         super(Ping, self).__init__(logger=logger, server=server)
         self._ip = ip
+        self._is_ipv6 = is_ipv6
         self._args = args
 
     def get_server_command(self):
-        return "ping %s %s" % (self._args, self._ip)
+        return "%s %s %s" % (("ping", "ping6")[self._is_ipv6], self._args, self._ip)
 
     def get_client_command(self):
         return None

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<test>
+    <name>PingTest</name>
+    <case>
+        <summary>one packet</summary>
+        <server_args>-c 1 </server_args>
+    </case>
+    <case>
+        <summary>10 packets</summary>
+        <server_args>-c 10 -i 0.01</server_args>
+    </case>
+    <case>
+        <summary>100 packets</summary>
+        <server_args>-c 100 -i 0.001</server_args>
+    </case>
+    <case>
+        <summary>small size 100 packets</summary>
+        <server_args>-c 100 -s 10 -i 0.001</server_args>
+    </case>
+    <case>
+        <summary>medium size 100 packets</summary>
+        <server_args>-c 100 -s 5000 -i 0.001</server_args>
+    </case>
+    <case>
+        <summary>max size 100 packets</summary>
+        <server_args>-c 100 -s 65507 -i 0.001</server_args>
+    </case>
+    <case>
+        <summary>small size 1000 packets</summary>
+        <server_args>-c 1000 -s 10 -i 0.001</server_args>
+    </case>
+    <case>
+        <summary>medium size 1000 packets</summary>
+        <server_args>-c 1000 -s 5000 -i 0.001</server_args>
+    </case>
+    <case>
+        <summary>max size 1000 packets</summary>
+        <server_args>-c 1000 -s 65507 -i 0.001</server_args>
+    </case>
+</test>

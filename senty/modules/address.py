@@ -25,9 +25,13 @@ Kamal Heib <kamalheib1@gmail.com>
 
 
 class Address(object):
-    def __init__(self, ip, is_ipv6=False):
+    def __init__(self, id, ip, is_ipv6=False):
+        self._id = id
         self._ip = ip
         self._is_ipv6 = is_ipv6
+
+    def get_id(self):
+        return self._id
 
     def get_ip(self):
         return self._ip
@@ -35,5 +39,6 @@ class Address(object):
     def is_ipv6(self):
         return self._is_ipv6
 
+    ID = property(get_id)
     IP = property(get_ip)
     IsIPv6 = property(is_ipv6)

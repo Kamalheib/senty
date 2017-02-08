@@ -30,9 +30,10 @@ import xmlrpclib
 class Host(object):
     ERROR_KEYWORDS = r'(error|fail|synd|assert)'
 
-    def __init__(self, ip, logger, port=8000, interfaces=[]):
+    def __init__(self, ip, logger, id, port=8000, interfaces=[]):
         self._ip = ip
         self._logger = logger
+        self._id = id
         self._port = port
         self._interfaces = interfaces
 
@@ -41,6 +42,9 @@ class Host(object):
 
     def get_logger(self):
         return self._logger
+
+    def get_id(self):
+        return self._id
 
     def get_port(self):
         return self._port
@@ -102,6 +106,7 @@ class Host(object):
         DMESG_CLEAR_CMD = 'dmesg -c'
         return self.run_command(DMESG_CLEAR_CMD)[0]
 
+    ID = property(get_id)
     IP = property(get_ip)
     Port = property(get_port)
     Logger = property(get_logger)
