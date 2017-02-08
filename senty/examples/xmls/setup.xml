@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<setup>
+    <host name="host1" id="h1">
+        <ip>10.194.7.10</ip>
+        <interfaces>
+            <interface name="mlx5_ib0" id="if1">
+                <addresses>
+                    <address id="11">11.194.7.10</address>
+                </addresses>
+            </interface>
+            <interface name="mlx5_roce" id="if2">
+                <addresses>
+                    <address id="12">12.194.7.10</address>
+                </addresses>
+            </interface>
+            <interface name="mlx5_roce.43" id="vlan43">
+                <addresses>
+                    <address id="43">43.194.7.10</address>
+                </addresses>
+            </interface>
+        </interfaces>
+        <ib_devices>
+            <ib_device id="dev1">
+                <name>mlx5_0</name>
+                <type>IB</type>
+            </ib_device>
+            <ib_device id="dev2">
+                <name>mlx5_1</name>
+                <type>ETH</type>
+            </ib_device>
+        </ib_devices>
+    </host>
+    <host name="host2" id="h2">
+        <ip>10.194.8.10</ip>
+        <interfaces>
+            <interface name="mlx5_ib0" id="if1">
+                <addresses>
+                    <address id="11">11.194.8.10</address>
+                </addresses>
+            </interface>
+            <interface name="mlx5_roce" id="if2">
+                <addresses>
+                    <address id="12">12.194.8.10</address>
+                </addresses>
+            </interface>
+            <interface name="mlx5_roce.43" id="vlan43">
+                <addresses>
+                    <address id="43">43.194.8.10</address>
+                </addresses>
+            </interface>
+        </interfaces>
+        <ib_devices>
+            <ib_device id="dev1">
+                <name>mlx5_0</name>
+                <type>IB</type>
+            </ib_device>
+            <ib_device id="dev2">
+                <name>mlx5_1</name>
+                <type>ETH</type>
+            </ib_device>
+        </ib_devices>
+    </host>
+</setup>
