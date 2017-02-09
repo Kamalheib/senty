@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<test>
+    <name>IperfTest</name>
+    <case>
+        <summary>Run for 5 sec</summary>
+        <client_args>-t 5</client_args>
+    </case>
+    <case>
+        <summary>Small size packets</summary>
+        <client_args>-t 5 -l 100</client_args>
+    </case>
+    <case>
+        <summary>Medium size packets</summary>
+        <client_args>-t 5 -l 5000</client_args>
+    </case>
+    <case>
+        <summary>Large size packets</summary>
+        <client_args>-t 5 -l 65535</client_args>
+    </case>
+    <case>
+        <summary>Threads - 4</summary>
+        <client_args>-t 5 -P 4</client_args>
+    </case>
+    <case>
+        <summary>Threads - 8</summary>
+        <client_args>-t 5 -P 8</client_args>
+    </case>
+    <case>
+        <summary>Threads - 16</summary>
+        <client_args>-t 5 -P 16</client_args>
+    </case>
+</test>

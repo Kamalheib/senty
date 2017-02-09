@@ -22,29 +22,3 @@ the file called "COPYING".
 Contact Information:
 Kamal Heib <kamalheib1@gmail.com>
 """
-
-from distutils.core import setup
-
-setup(
-    name='senty',
-    version='0.1',
-    description='Senty Project',
-    long_description='Senty is a python based project for testing network.',
-    license='GPL v2',
-    author='Kamal Heib, Slava Shwartsman',
-    author_email='kamalheib1@gmail.com, valyushash@gmail.com',
-    url='https://github.com/Kamalheib/senty',
-    packages=[
-        'senty',
-        'senty.rpc',
-        'senty.utils',
-        'senty.tests',
-        'senty.tests.blocks',
-        'senty.tests.ping',
-        'senty.tests.iperf',
-        'senty.tools',
-        'senty.modules'
-    ],
-    data_files=[('/lib/systemd/system/', ['senty/senty.service'])],
-    scripts=['senty/rpc/senty_rpc_server.py']
-)
