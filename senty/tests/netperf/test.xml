@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<test>
+    <name>NetperfTest</name>
+    <case>
+        <summary>TCP_STREAM - default params</summary>
+        <client_args>-t TCP_STREAM</client_args>
+    </case>
+    <case>
+        <summary>TCP_STREAM - small size packets</summary>
+        <client_args>-t TCP_STREAM -- -m 100 </client_args>
+    </case>
+    <case>
+        <summary>TCP_STREAM - medium size packets</summary>
+        <client_args>-t TCP_STREAM -- -m 5000 </client_args>
+    </case>
+    <case>
+        <summary>TCP_STREAM - max size packets</summary>
+        <client_args>-t TCP_STREAM -- -m 65507 </client_args>
+    </case>
+    <case>
+        <summary>UDP_STREAM - default params</summary>
+        <client_args>-t UDP_STREAM</client_args>
+    </case>
+    <case>
+        <summary>UDP_STREAM - small size packets</summary>
+        <client_args>-t UDP_STREAM -- -m 100 </client_args>
+    </case>
+    <case>
+        <summary>UDP_STREAM - medium size packets</summary>
+        <client_args>-t UDP_STREAM -- -m 5000 </client_args>
+    </case>
+    <case>
+        <summary>UDP_STREAM - max size packets</summary>
+        <client_args>-t UDP_STREAM -- -m 65507 </client_args>
+    </case>
+</test>
