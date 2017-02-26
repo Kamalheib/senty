@@ -24,41 +24,50 @@ Kamal Heib <kamalheib1@gmail.com>
 """
 
 import sys
-from senty.tests.blocks.ping import Ping
-from senty.tests.traffic_test import TrafficTest
+
+from senty.tests.blocks.ip.netperf import Netperf
+from senty.tests.common.traffic_test import TrafficTest
 
 
-class PingTest(TrafficTest):
+class NetperfTest(TrafficTest):
     def __init__(self):
-        super(PingTest, self).__init__()
+        super(NetperfTest, self).__init__()
         self.caseToTests = {}
 
     def init_tests(self):
         for case in self.Cases:
             tests = []
             for s_interface, c_interface in self.Pairs.iteritems():
-                for s_addr in s_interface.Addresses:
-                    c_addr = self.get_pair_addr(s_addr.ID, c_interface.Addresses)
-                    tests.append(Ping(self.Logger, self.Server, c_addr.IP, c_addr.IsIPv6, case.ServerArgs))
-            self.caseToTests[case] = tests
+                for address in s_interface.Addresses:
+                    addr = self.get_pair_addr(address.ID, s_interface.Addresses)
+                    tests.append(Netperf(self.Logger, self.Server, self.Client, addr.IP, addr.IsIPv6,
+                                         client_args=case.ClientArgs))
+                self.caseToTests[case] = tests
 
     def setup(self):
-        super(PingTest, self).setup()
+        super(NetperfTest, self).setup()
         for case, tests in self.caseToTests.iteritems():
             [test.init() for test in tests]
         return 0
 
     def run(self):
-        super(PingTest, self).run()
         rcs = [0]
         for case in self.Cases:
-            self.Logger.pr_info("%s" % case.Summary)
             tests = self.caseToTests[case]
+            self.Logger.pr_info("%s" % case.Summary)
             for test in tests:
                 rcs += [test.run()]
         return sum(rcs)
 
+    def teardown(self):
+        rcs = [0]
+        super(NetperfTest, self).teardown()
+        for case, tests in self.caseToTests.iteritems():
+            for test in tests:
+                rcs += [test.restore()]
+        return sum(rcs)
+
 if __name__ == '__main__':
-    ping_test = PingTest()
-    rc = ping_test.execute(sys.argv[1:])
+    netperf_test = NetperfTest()
+    rc = netperf_test.execute(sys.argv[1:])
     sys.exit(rc)

@@ -26,14 +26,14 @@ Kamal Heib <kamalheib1@gmail.com>
 import signal
 import traceback
 import xml.etree.ElementTree
-from argparse import ArgumentParser
 from abc import ABCMeta, abstractmethod
+from argparse import ArgumentParser
 
-from senty.modules.host import Host
-from senty.utils.logger import Logger
 from senty.modules.address import Address
-from senty.tests.test_case import TestCase
+from senty.modules.host import Host
 from senty.modules.interface import Interface
+from senty.tests.common.test_case import TestCase
+from senty.utils.logger import Logger
 
 
 class BasicTest(object):

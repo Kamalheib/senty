@@ -24,13 +24,14 @@ Kamal Heib <kamalheib1@gmail.com>
 """
 
 import sys
-from senty.tests.blocks.netperf import Netperf
-from senty.tests.traffic_test import TrafficTest
+
+from senty.tests.blocks.ip.iperf import Iperf
+from senty.tests.common.traffic_test import TrafficTest
 
 
-class NetperfTest(TrafficTest):
+class IperfTest(TrafficTest):
     def __init__(self):
-        super(NetperfTest, self).__init__()
+        super(IperfTest, self).__init__()
         self.caseToTests = {}
 
     def init_tests(self):
@@ -39,12 +40,12 @@ class NetperfTest(TrafficTest):
             for s_interface, c_interface in self.Pairs.iteritems():
                 for address in s_interface.Addresses:
                     addr = self.get_pair_addr(address.ID, s_interface.Addresses)
-                    tests.append(Netperf(self.Logger, self.Server, self.Client, addr.IP, addr.IsIPv6,
-                                         client_args=case.ClientArgs))
-                self.caseToTests[case] = tests
+                    tests.append(Iperf(self.Logger, self.Server, self.Client, addr.IP, addr.IsIPv6,
+                                       client_args=case.ClientArgs))
+            self.caseToTests[case] = tests
 
     def setup(self):
-        super(NetperfTest, self).setup()
+        super(IperfTest, self).setup()
         for case, tests in self.caseToTests.iteritems():
             [test.init() for test in tests]
         return 0
@@ -60,13 +61,13 @@ class NetperfTest(TrafficTest):
 
     def teardown(self):
         rcs = [0]
-        super(NetperfTest, self).teardown()
+        super(IperfTest, self).teardown()
         for case, tests in self.caseToTests.iteritems():
             for test in tests:
                 rcs += [test.restore()]
         return sum(rcs)
 
 if __name__ == '__main__':
-    netperf_test = NetperfTest()
-    rc = netperf_test.execute(sys.argv[1:])
+    iperf_test = IperfTest()
+    rc = iperf_test.execute(sys.argv[1:])
     sys.exit(rc)

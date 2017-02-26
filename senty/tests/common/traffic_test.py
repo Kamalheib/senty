@@ -24,7 +24,8 @@ Kamal Heib <kamalheib1@gmail.com>
 """
 
 from abc import ABCMeta, abstractmethod
-from senty.tests.basic_test import BasicTest
+
+from senty.tests.common.basic_test import BasicTest
 
 
 class TrafficTest(BasicTest):

@@ -23,7 +23,7 @@ Contact Information:
 Kamal Heib <kamalheib1@gmail.com>
 """
 
-from senty.tests.blocks.traffic import Traffic
+from senty.tests.blocks.common.traffic import Traffic
 
 
 class Iperf(Traffic):

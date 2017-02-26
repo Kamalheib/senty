@@ -23,37 +23,28 @@ Contact Information:
 Kamal Heib <kamalheib1@gmail.com>
 """
 
-from senty.tests.blocks.traffic import Traffic
+from senty.tests.blocks.common.traffic import Traffic
 
 
-class Netperf(Traffic):
-    def __init__(self, logger, server, client, ip, is_ipv6=False, server_args='', client_args=''):
-        super(Netperf, self).__init__(logger=logger, server=server, client=client)
+class Ping(Traffic):
+    def __init__(self, logger, server, ip, is_ipv6=False, args='-c 1'):
+        super(Ping, self).__init__(logger=logger, server=server)
         self._ip = ip
         self._is_ipv6 = is_ipv6
-        self._server_args = server_args
-        self._client_args = client_args
+        self._args = args
 
     def get_server_command(self):
-        if self._is_ipv6:
-            return "netserver -6"
-        else:
-            return "netserver -4"
+        return "%s %s %s" % (("ping", "ping6")[self._is_ipv6], self._args, self._ip)
 
     def get_client_command(self):
-        if self._is_ipv6:
-            return "netperf  -6 -H %s %s " % (self._ip, self._client_args)
-        else:
-            return "netperf -4 -H %s %s" % (self._ip, self._client_args)
+        return None
 
     def init(self):
         self.Logger.pr_dbg('--------=== Initialization stage - [ %s ] ===--------' % self.__class__.__name__)
 
     def wait(self):
         self.Logger.pr_dbg('--------=== Wait stage - [ %s ] ===--------' % self.__class__.__name__)
-        (rc, out) = self.Client.wait_process(self._host_to_pid[self.Client])
+        (rc, out) = self.Server.wait_process(self._host_to_pid[self.Server])
         if rc:
-            self.Logger.pr_err('%s - %s' % (self.Client.IP, out))
-
-        super(Netperf, self).kill()
+            self.Logger.pr_err('%s - %s' % (self.Server.IP, out))
         return rc
