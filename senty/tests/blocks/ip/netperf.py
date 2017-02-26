@@ -36,9 +36,9 @@ class Netperf(Traffic):
 
     def get_server_command(self):
         if self._is_ipv6:
-            return "netserver -6"
+            return "netserver -D -6"
         else:
-            return "netserver -4"
+            return "netserver -D -4"
 
     def get_client_command(self):
         if self._is_ipv6:
