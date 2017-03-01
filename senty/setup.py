@@ -49,6 +49,7 @@ setup(
         'senty.tests.ip.netperf',
         'senty.tests.rdma',
         'senty.tests.rdma.ibv_rc_pingpong',
+        'senty.tests.rdma.ibv_uc_pingpong',
         'senty.tests.common',
         'senty.tools',
         'senty.modules'
