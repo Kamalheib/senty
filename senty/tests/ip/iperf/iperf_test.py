@@ -39,7 +39,7 @@ class IperfTest(TrafficTest):
             tests = []
             for s_interface, c_interface in self.Pairs.iteritems():
                 for address in s_interface.Addresses:
-                    addr = self.get_pair_addr(address.ID, s_interface.Addresses)
+                    addr = self.get_pair(address, s_interface.Addresses)
                     tests.append(Iperf(self.Logger, self.Server, self.Client, addr.IP, addr.IsIPv6,
                                        client_args=case.ClientArgs))
             self.caseToTests[case] = tests

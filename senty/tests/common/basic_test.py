@@ -29,11 +29,13 @@ import xml.etree.ElementTree
 from abc import ABCMeta, abstractmethod
 from argparse import ArgumentParser
 
-from senty.modules.address import Address
 from senty.modules.host import Host
+from senty.modules.port import Port
+from senty.utils.logger import Logger
+from senty.modules.address import Address
+from senty.modules.rdma_dev import RDMADev
 from senty.modules.interface import Interface
 from senty.tests.common.test_case import TestCase
-from senty.utils.logger import Logger
 
 
 class BasicTest(object):
@@ -73,6 +75,30 @@ class BasicTest(object):
             interfaces.append(Interface(name, id, addresses))
         return interfaces
 
+    def __get_ports(self, device_xml):
+        ports = []
+        for port in device_xml.find('ports').findall('port'):
+            v1_gids = []
+            v2_gids = []
+            name = port.get('name')
+            id = port.get('id')
+            type = port.get('type')
+            if port.find('v1_gids') is not None:
+                v1_gids = port.find('v1_gids').text.split(' ')
+            if port.find('v2_gids') is not None:
+                v2_gids = port.find('v2_gids').text.split(' ')
+            ports.append(Port(name, id, type, v1_gids, v2_gids))
+        return ports
+
+    def __get_rdma_devs(self, host_xml):
+        rdma_devs = []
+        for device in host_xml.find('ib_devices').findall('ib_device'):
+            name = device.get('name')
+            id = device.get('id')
+            ports = self.__get_ports(device)
+            rdma_devs.append(RDMADev(name, id, ports))
+        return rdma_devs
+
     def get_hosts(self):
         if not hasattr(self, '_hosts'):
             self._hosts = []
@@ -80,7 +106,8 @@ class BasicTest(object):
                 host_ip = host.find('ip').text
                 host_id = host.get('id')
                 interfaces = self.__get_interfaces(host)
-                self._hosts.append(Host(host_ip, self.Logger, host_id, interfaces=interfaces))
+                rdma_dev = self.__get_rdma_devs(host)
+                self._hosts.append(Host(host_ip, self.Logger, host_id, interfaces=interfaces, rdma_devs=rdma_dev))
         return self._hosts
 
     def get_cases(self):

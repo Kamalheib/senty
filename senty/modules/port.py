@@ -51,4 +51,4 @@ class Port(object):
     Name = property(get_name)
     Type = property(get_type)
     V1GIDs = property(get_v1_gids)
-    v2GIDs = property(get_v2_gids)
+    V2GIDs = property(get_v2_gids)

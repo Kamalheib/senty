@@ -39,7 +39,7 @@ class PingTest(TrafficTest):
             tests = []
             for s_interface, c_interface in self.Pairs.iteritems():
                 for s_addr in s_interface.Addresses:
-                    c_addr = self.get_pair_addr(s_addr.ID, c_interface.Addresses)
+                    c_addr = self.get_pair(s_addr, c_interface.Addresses)
                     tests.append(Ping(self.Logger, self.Server, c_addr.IP, c_addr.IsIPv6, case.ServerArgs))
             self.caseToTests[case] = tests
 

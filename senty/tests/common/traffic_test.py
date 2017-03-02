@@ -41,12 +41,8 @@ class TrafficTest(BasicTest):
         return filter(lambda h: h.ID == 'h2', self.Hosts)[0]
 
     @staticmethod
-    def get_pair_addr(id, addresses):
-        return filter(lambda i: i.ID == id, addresses)[0]
-
-    @staticmethod
-    def get_pair(interface, interfaces):
-        return filter(lambda i: interface.ID == i.ID, interfaces)[0]
+    def get_pair(item, collection):
+        return filter(lambda i: item.ID == i.ID, collection)[0]
 
     def get_pairs(self):
         if not hasattr(self, '_pairs'):
@@ -55,6 +51,14 @@ class TrafficTest(BasicTest):
                 client_if = self.get_pair(interface, self.Client.Interfaces)
                 self._pairs[interface] = client_if
         return self._pairs
+
+    def get_rdma_pairs(self):
+        if not hasattr(self, '_rdma_dev_pairs'):
+            self._rdma_dev_pairs = {}
+            for s_dev in self.Server.RDMADevs:
+                c_dev = self.get_pair(s_dev, self.Client.RDMADevs)
+                self._rdma_dev_pairs[s_dev] = c_dev
+        return self._rdma_dev_pairs
 
     @abstractmethod
     def init_tests(self):
@@ -67,3 +71,4 @@ class TrafficTest(BasicTest):
     Pairs = property(get_pairs)
     Client = property(get_client)
     Server = property(get_server)
+    RDMAPairs = property(get_rdma_pairs)
