@@ -42,6 +42,7 @@ setup(
         'senty.tests.blocks',
         'senty.tests.blocks.ip',
         'senty.tests.blocks.rdma',
+        'senty.tests.blocks.rdmacm',
         'senty.tests.blocks.common',
         'senty.tests.common',
         'senty.tools',
