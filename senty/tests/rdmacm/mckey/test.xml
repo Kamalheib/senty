@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<test>
+    <name>MCkeyTest</name>
+    <case>
+        <summary>10 packets</summary>
+        <server_args>-C 10</server_args>
+        <client_args>-C 10</client_args>
+    </case>
+    <case>
+        <summary>100 packets</summary>
+        <server_args>-C 100</server_args>
+        <client_args>-C 100</client_args>
+    </case>
+    <case>
+        <summary>1000 packets</summary>
+        <server_args>-C 1000</server_args>
+        <client_args>-C 1000</client_args>
+    </case>
+    <case>
+        <summary>10 packets with 10 connections</summary>
+        <server_args>-C 10 -c 10</server_args>
+        <client_args>-C 10 -c 10</client_args>
+    </case>
+    <case>
+        <summary>100 packets with 10 connections</summary>
+        <server_args>-C 100 -c 10</server_args>
+        <client_args>-C 100 -c 10</client_args>
+    </case>
+    <case>
+        <summary>1000 packets with 10 connections</summary>
+        <server_args>-C 1000 -c 10</server_args>
+        <client_args>-C 1000 -c 10</client_args>
+    </case>
+    <case>
+        <summary>23 size with 1000 packets</summary>
+        <server_args>-C 1000 -S 23</server_args>
+        <client_args>-C 1000 -S 23</client_args>
+    </case>
+    <case>
+        <summary>1024 size with 1000 packets</summary>
+        <server_args>-C 1000 -S 1024</server_args>
+        <client_args>-C 1000 -S 1024</client_args>
+    </case>
+    <case>
+        <summary>23 size with 100 packets with 10 connections</summary>
+        <server_args>-C 100 -S 23 -c 10</server_args>
+        <client_args>-C 100 -S 23 -c 10</client_args>
+    </case>
+    <case>
+        <summary>1024 size with 100 packets with 10 connections</summary>
+        <server_args>-C 100 -S 1024 -c 10</server_args>
+        <client_args>-C 100 -S 1024 -c 10</client_args>
+    </case>
+</test>
