@@ -59,44 +59,48 @@ class BasicTest(object):
 
     def __get_addresses(self, interface_xml):
         addresses = []
-        for address in interface_xml.find('addresses').findall('address'):
-            ip = address.text
-            is_ipv6 = (False, True)[address.get('ipv6') == "yes"]
-            id = address.get('id')
-            addresses.append(Address(id, ip, is_ipv6))
+        if interface_xml.find('addresses') is not None:
+            for address in interface_xml.find('addresses').findall('address'):
+                ip = address.text
+                is_ipv6 = (False, True)[address.get('ipv6') == "yes"]
+                id = address.get('id')
+                addresses.append(Address(id, ip, is_ipv6))
         return addresses
 
     def __get_interfaces(self, host_xml):
         interfaces = []
-        for interface in host_xml.find('interfaces').findall('interface'):
-            name = interface.get('name')
-            id = interface.get('id')
-            addresses = self.__get_addresses(interface)
-            interfaces.append(Interface(name, id, addresses))
+        if host_xml.find('interfaces') is not None:
+            for interface in host_xml.find('interfaces').findall('interface'):
+                name = interface.get('name')
+                id = interface.get('id')
+                addresses = self.__get_addresses(interface)
+                interfaces.append(Interface(name, id, addresses))
         return interfaces
 
     def __get_ports(self, device_xml):
         ports = []
-        for port in device_xml.find('ports').findall('port'):
-            v1_gids = []
-            v2_gids = []
-            name = port.get('name')
-            id = port.get('id')
-            type = port.get('type')
-            if port.find('v1_gids') is not None:
-                v1_gids = port.find('v1_gids').text.split(' ')
-            if port.find('v2_gids') is not None:
-                v2_gids = port.find('v2_gids').text.split(' ')
-            ports.append(Port(name, id, type, v1_gids, v2_gids))
+        if device_xml.find('ports') is not None:
+            for port in device_xml.find('ports').findall('port'):
+                v1_gids = []
+                v2_gids = []
+                name = port.get('name')
+                id = port.get('id')
+                type = port.get('type')
+                if port.find('v1_gids') is not None:
+                    v1_gids = port.find('v1_gids').text.split(' ')
+                if port.find('v2_gids') is not None:
+                    v2_gids = port.find('v2_gids').text.split(' ')
+                ports.append(Port(name, id, type, v1_gids, v2_gids))
         return ports
 
     def __get_rdma_devs(self, host_xml):
         rdma_devs = []
-        for device in host_xml.find('ib_devices').findall('ib_device'):
-            name = device.get('name')
-            id = device.get('id')
-            ports = self.__get_ports(device)
-            rdma_devs.append(RDMADev(name, id, ports))
+        if host_xml.find('ib_devices') is not None:
+            for device in host_xml.find('ib_devices').findall('ib_device'):
+                name = device.get('name')
+                id = device.get('id')
+                ports = self.__get_ports(device)
+                rdma_devs.append(RDMADev(name, id, ports))
         return rdma_devs
 
     def get_hosts(self):
