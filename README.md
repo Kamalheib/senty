@@ -1,4 +1,5 @@
 # Senty #
+[![Build Status](https://travis-ci.org/Kamalheib/senty.svg?branch=master)](https://travis-ci.org/Kamalheib/senty)
 
 Senty is a python based project for testing network.
 
