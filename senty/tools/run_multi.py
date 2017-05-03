@@ -46,7 +46,7 @@ class RunMulti(object):
         if not hasattr(self, '_hosts'):
             self._hosts = set()
             for ip in self.ips:
-                self._hosts.add(Host(ip, self.Logger))
+                self._hosts.add(Host(ip, self.Logger, 0))
         return self._hosts
 
     def run_commands(self):
