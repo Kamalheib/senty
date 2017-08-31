@@ -30,8 +30,8 @@ from senty.tests.common.traffic_test import TrafficTest
 
 
 class PingTest(TrafficTest):
-    def __init__(self):
-        super(PingTest, self).__init__()
+    def __init__(self, logger=None, setup_file=None, test_file=None):
+        super(PingTest, self).__init__(logger, setup_file, test_file)
         self.caseToTests = {}
 
     def init_tests(self):

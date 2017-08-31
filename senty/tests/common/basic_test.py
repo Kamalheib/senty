@@ -41,8 +41,11 @@ from senty.tests.common.test_case import TestCase
 class BasicTest(object):
     __metaclass__ = ABCMeta
 
-    def __init__(self, name):
+    def __init__(self, name, logger=None, setup_file=None, test_file=None):
         self._name = name
+        self.logger = logger
+        self.setup_file = setup_file
+        self.test_file = test_file
 
     def get_name(self):
         return self._name
@@ -53,8 +56,10 @@ class BasicTest(object):
         return self._parser
 
     def get_logger(self):
-        if not hasattr(self, '_logger'):
+        if not hasattr(self, '_logger') and not self.logger:
             self._logger = Logger(self.Name, self.verbose)
+        else:
+            self._logger = self.logger
         return self._logger
 
     def __get_addresses(self, interface_xml):
@@ -166,8 +171,9 @@ class BasicTest(object):
     def execute(self, args):
         rc = 0
         try:
-            self.configure_parser()
-            self.parse_args(args)
+            if args:
+                self.configure_parser()
+                self.parse_args(args)
             self.parse_setup_xml()
             self.parse_test_xml()
             self.Logger.pr_info('--------=== Start Test - [ %s ] ===--------' % self.Name)

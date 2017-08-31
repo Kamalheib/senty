@@ -39,6 +39,10 @@ setup(
         'senty.rpc',
         'senty.utils',
         'senty.tests',
+        'senty.tests.ip',
+        'senty.tests.ip.ping',
+        'senty.tests.ip.iperf',
+        'senty.tests.ip.netperf',
         'senty.tests.blocks',
         'senty.tests.blocks.ip',
         'senty.tests.blocks.rdma',
@@ -46,7 +50,9 @@ setup(
         'senty.tests.blocks.common',
         'senty.tests.common',
         'senty.tools',
-        'senty.modules'
+        'senty.modules',
+        'senty.packages',
+        'senty.packages.ip'
     ],
     data_files=[('/lib/systemd/system/', ['senty/senty.service'])],
     scripts=['senty/rpc/senty_rpc_server.py']

@@ -31,8 +31,8 @@ from senty.tests.common.basic_test import BasicTest
 class TrafficTest(BasicTest):
     __metaclass__ = ABCMeta
 
-    def __init__(self):
-        super(TrafficTest, self).__init__(self.__class__.__name__)
+    def __init__(self, logger=None, setup_file=None, test_file=None):
+        super(TrafficTest, self).__init__(self.__class__.__name__, logger, setup_file, test_file)
 
     def get_server(self):
         return filter(lambda h: h.ID == 'h1', self.Hosts)[0]
