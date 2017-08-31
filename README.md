@@ -14,3 +14,4 @@ sudo python senty/setup.py install
 ## Authors
 * Kamal Heib <kamalheib1@gmail.com>
 * Slava Shwartsman <valyushash@gmail.com>
+* Erez Alfasi <erez8272@gmail.com>
