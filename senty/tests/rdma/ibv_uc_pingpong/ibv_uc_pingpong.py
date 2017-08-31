@@ -29,8 +29,8 @@ from senty.tests.blocks.rdma.ibv_xx_pingpong import IBvXXPingPong
 
 
 class IBvUCPingPong(TrafficTest):
-    def __init__(self):
-        super(IBvUCPingPong, self).__init__()
+    def __init__(self, logger=None, setup_file=None, test_file=None):
+        super(IBvUCPingPong, self).__init__(logger, setup_file, test_file)
         self.caseToTests = {}
 
     def init_tests(self):
