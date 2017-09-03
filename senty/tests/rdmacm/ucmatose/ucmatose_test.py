@@ -29,8 +29,8 @@ from senty.tests.blocks.rdmacm.ucmatose import UCMatose
 
 
 class UCMatoseTest(TrafficTest):
-    def __init__(self):
-        super(UCMatoseTest, self).__init__()
+    def __init__(self, logger=None, setup_file=None, test_file=None):
+        super(UCMatoseTest, self).__init__(logger, setup_file, test_file)
         self.caseToTests = {}
 
     def init_tests(self):

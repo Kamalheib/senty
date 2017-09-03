@@ -48,6 +48,11 @@ setup(
         'senty.tests.rdma.ibv_uc_pingpong',
         'senty.tests.rdma.ibv_ud_pingpong',
         'senty.tests.rdma.ibv_srq_pingpong',
+        'senty.tests.rdmacm',
+        'senty.tests.rdmacm.mckey',
+        'senty.tests.rdmacm.rping',
+        'senty.tests.rdmacm.ucmatose',
+        'senty.tests.rdmacm.udaddy',
         'senty.tests.blocks',
         'senty.tests.blocks.ip',
         'senty.tests.blocks.rdma',
@@ -58,7 +63,8 @@ setup(
         'senty.modules',
         'senty.packages',
         'senty.packages.ip',
-        'senty.packages.rdma'
+        'senty.packages.rdma',
+        'senty.packages.rdmacm'
     ],
     data_files=[('/lib/systemd/system/', ['senty/senty.service'])],
     scripts=['senty/rpc/senty_rpc_server.py']
