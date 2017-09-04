@@ -23,6 +23,7 @@ Contact Information:
 Kamal Heib <kamalheib1@gmail.com>
 """
 
+from unit_test import UnitTest
 from distutils.core import setup
 
 setup(
@@ -66,6 +67,7 @@ setup(
         'senty.packages.rdma',
         'senty.packages.rdmacm'
     ],
+    cmdclass={'test': UnitTest},
     data_files=[('/lib/systemd/system/', ['senty/senty.service'])],
     scripts=['senty/rpc/senty_rpc_server.py']
 )

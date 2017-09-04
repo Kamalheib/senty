@@ -10,4 +10,4 @@ install:
   - pip install --upgrade pip
   - sudo python senty/setup.py install
 script:
-  - echo "hi"
+  - sudo python senty/setup.py test
