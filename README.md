@@ -1,5 +1,6 @@
 # Senty #
 [![Build Status](https://travis-ci.org/Kamalheib/senty.svg?branch=master)](https://travis-ci.org/Kamalheib/senty)
+[![License: GPLv2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://raw.githubusercontent.com/Kamalheib/senty/master/LICENSE)
 
 Senty is a python based project for testing network.
 

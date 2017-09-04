@@ -30,7 +30,7 @@ setup(
     version='0.1',
     description='Senty Project',
     long_description='Senty is a python based project for testing network.',
-    license='GPL v2',
+    license='GPLv2',
     author='Kamal Heib, Slava Shwartsman, Erez Alfasi',
     author_email='kamalheib1@gmail.com, valyushash@gmail.com, Erez8272@gmail.com',
     url='https://github.com/Kamalheib/senty',
