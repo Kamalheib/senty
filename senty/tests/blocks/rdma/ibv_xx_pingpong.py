@@ -51,6 +51,7 @@ class IBvXXPingPong(Traffic):
         self.Logger.pr_dbg('--------=== Wait stage - [ %s ] ===--------' % self.__class__.__name__)
         (rc, out) = self.Client.wait_process(self._host_to_pid[self.Client])
         if rc:
+            self.Logger.pr_err('%s - Command: %s' % (self.Client.IP, self.get_client_command()))
             self.Logger.pr_err('%s - %s' % (self.Client.IP, out))
 
         super(IBvXXPingPong, self).kill()

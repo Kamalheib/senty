@@ -46,5 +46,6 @@ class Ping(Traffic):
         self.Logger.pr_dbg('--------=== Wait stage - [ %s ] ===--------' % self.__class__.__name__)
         (rc, out) = self.Server.wait_process(self._host_to_pid[self.Server])
         if rc:
+            self.Logger.pr_err('%s - Command: %s' % (self.Server.IP, self.get_server_command()))
             self.Logger.pr_err('%s - %s' % (self.Server.IP, out))
         return rc
