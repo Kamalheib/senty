@@ -28,7 +28,7 @@ from distutils.core import setup
 
 setup(
     name='senty',
-    version='0.1',
+    version='1.0',
     description='Senty Project',
     long_description='Senty is a python based project for testing network.',
     license='GPLv2',
