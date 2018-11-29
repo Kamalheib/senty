@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<test>
+    <name>ibv_uc_pingpong</name>
+    <case>
+        <summary>Default params</summary>
+    </case>
+    <case>
+        <summary>Small size</summary>
+        <server_args>-s 100</server_args>
+        <client_args>-s 100</client_args>
+    </case>
+    <case>
+        <summary>Medium size</summary>
+        <server_args>-s 5000</server_args>
+        <client_args>-s 5000</client_args>
+    </case>
+    <case>
+        <summary>Large size</summary>
+        <server_args>-s 65507</server_args>
+        <client_args>-s 65507</client_args>
+    </case>
+</test>

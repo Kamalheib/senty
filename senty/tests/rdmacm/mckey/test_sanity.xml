@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<test>
+    <name>MCkeyTest</name>
+    <case>
+        <summary>10 packets</summary>
+        <server_args>-C 10</server_args>
+        <client_args>-C 10</client_args>
+    </case>
+    <case>
+        <summary>100 packets</summary>
+        <server_args>-C 100</server_args>
+        <client_args>-C 100</client_args>
+    </case>
+    <case>
+        <summary>1000 packets</summary>
+        <server_args>-C 1000</server_args>
+        <client_args>-C 1000</client_args>
+    </case>
+</test>
