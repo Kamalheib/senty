@@ -2,10 +2,6 @@
 <test>
     <name>IperfTest</name>
     <case>
-        <summary>Run for 5 sec</summary>
-        <client_args>-t 5</client_args>
-    </case>
-    <case>
         <summary>Small size packets</summary>
         <client_args>-t 5 -l 100</client_args>
     </case>
