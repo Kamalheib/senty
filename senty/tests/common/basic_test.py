@@ -56,10 +56,11 @@ class BasicTest(object):
         return self._parser
 
     def get_logger(self):
-        if not hasattr(self, '_logger') and not self.logger:
-            self._logger = Logger(self.Name, self.verbose)
-        else:
-            self._logger = self.logger
+        if not hasattr(self, '_logger'):
+            if self.logger == None:
+                self._logger = Logger(self.Name, self.verbose)
+            else:
+                self._logger = self.logger
         return self._logger
 
     def __get_addresses(self, interface_xml):
@@ -182,8 +183,8 @@ class BasicTest(object):
             rc = rc or self.teardown()
         except Exception, e:
             rc = 1
-            self.Logger.pr_err(e)
             traceback.print_exc()
+            self.Logger.pr_err(e)
         finally:
             signal.signal(signal.SIGTERM, signal.SIG_DFL)
         return rc
