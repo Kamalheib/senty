@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<test>
+    <name>ibutils_test</name>
+    <case>
+        <summary>ibdiagnet</summary>
+    </case>
+    <case>
+      <summary>ibstat</summary>
+    </case>
+</test>
