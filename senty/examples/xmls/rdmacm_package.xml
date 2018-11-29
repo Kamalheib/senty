@@ -1,0 +1,6 @@
+<package name="rdmacm">
+	<test name="mckey">/home/kheib/git/github/senty/senty/tests/rdmacm/mckey/test_sanity.xml</test>
+	<test name="rping">/home/kheib/git/github/senty/senty/tests/rdmacm/rping/test_sanity.xml</test>
+	<test name="ucmatose">/home/kheib/git/github/senty/senty/tests/rdmacm/ucmatose/test_sanity.xml</test>
+	<test name="udaddy">/home/kheib/git/github/senty/senty/tests/rdmacm/udaddy/test_sanity.xml</test>
+</package>

@@ -1,0 +1,4 @@
+<package name="ip">
+	<test name="ping">/home/kheib/git/github/senty/senty/tests/ip/ping/test_sanity.xml</test>
+	<test name="iperf">/home/kheib/git/github/senty/senty/tests/ip/iperf/test_sanity.xml</test>
+</package>
