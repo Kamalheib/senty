@@ -181,7 +181,7 @@ class BasicTest(object):
             rc = rc or self.setup()
             rc = rc or self.run()
             rc = rc or self.teardown()
-        except Exception, e:
+        except Exception as e:
             rc = 1
             traceback.print_exc()
             self.Logger.pr_err(e)
