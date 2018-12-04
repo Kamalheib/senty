@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<test>
+    <name>SRPTest</name>
+    <case>
+        <summary>default</summary>
+    </case>
+</test>

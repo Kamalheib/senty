@@ -19,7 +19,7 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 The full GNU General Public License is included in this distribution in
 the file called "COPYING".
 
-Contact Information:
+Contact Informatstorge_packageion:
 Kamal Heib <kamalheib1@gmail.com>
 """
 
@@ -37,9 +37,10 @@ class PackagesParser(xml.sax.ContentHandler):
         self.ip_test_dict = {}
         self.rdma_test_dict = {}
         self.rdmacm_test_dict = {}
+        self.storage_test_dict = {}
 
     def get_test_dictionaries(self):
-        return self.ip_test_dict, self.rdma_test_dict, self.rdmacm_test_dict
+        return self.ip_test_dict, self.rdma_test_dict, self.rdmacm_test_dict, self.storage_test_dict
 
     def startElement(self, tag, attributes):
         self.CurrentData = tag
@@ -66,3 +67,5 @@ class PackagesParser(xml.sax.ContentHandler):
             self.rdma_test_dict.__setitem__(self.test_title, self.test_path)
         elif self.name == 'rdmacm':
             self.rdmacm_test_dict.__setitem__(self.test_title, self.test_path)
+        elif self.name == 'storage':
+            self.storage_test_dict.__setitem__(self.test_title, self.test_path)

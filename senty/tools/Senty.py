@@ -31,6 +31,7 @@ from senty.packages.ip.ip_package import IPPackage
 from senty.packages.packages_parser import PackagesParser
 from senty.packages.rdma.rdma_package import RDMAPackage
 from senty.packages.rdmacm.rdmacm_package import RDMACMPackage
+from senty.packages.storage.storage_package import StoragePackage
 
 
 class Senty(object):
@@ -65,6 +66,7 @@ class Senty(object):
         self.packages_list.append(IPPackage(self.Logger, self.setup_file, self.ip_tests_dict))
         self.packages_list.append(RDMAPackage(self.Logger, self.setup_file, self.rdma_tests_dict))
         self.packages_list.append(RDMACMPackage(self.Logger, self.setup_file, self.rdmacm_tests_dict))
+        self.packages_list.append(StoragePackage(self.Logger, self.setup_file, self.storage_tests_dict))
         for pkg in self.packages_list:
             pkg.create_tests()
 
@@ -78,8 +80,8 @@ class Senty(object):
         self.packages_file_parser.setFeature(xml.sax.handler.feature_namespaces, 0)
         self.packages_file_parser.setContentHandler(self.packages_file_handler)
         self.packages_file_parser.parse(self.package_file)
-        (self.ip_tests_dict, self.rdma_tests_dict, self.rdmacm_tests_dict) = \
-            self.packages_file_handler.get_test_dictionaries()
+        (self.ip_tests_dict, self.rdma_tests_dict, self.rdmacm_tests_dict,
+         self.storage_tests_dict) = self.packages_file_handler.get_test_dictionaries()
 
     def execute(self, args):
         self.parse_args(args)
@@ -89,6 +91,7 @@ class Senty(object):
 
     Logger = property(get_logger)
     Parser = property(get_parser)
+
 
 if __name__ == '__main__':
     sys.exit(Senty().execute(sys.argv[1:]))
