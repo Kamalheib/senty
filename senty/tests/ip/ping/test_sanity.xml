@@ -2,14 +2,6 @@
 <test>
     <name>PingTest</name>
     <case>
-        <summary>one packet</summary>
-        <server_args>-c 1 </server_args>
-    </case>
-    <case>
-        <summary>10 packets</summary>
-        <server_args>-c 10 -i 0.01</server_args>
-    </case>
-    <case>
         <summary>100 packets</summary>
         <server_args>-c 100 -i 0.001</server_args>
     </case>

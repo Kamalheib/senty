@@ -1,0 +1,21 @@
+<packages>
+	<package name="ip">
+		<test name="ping">/home/kheib/git/github/senty/senty/tests/ip/ping/test_sanity.xml</test>
+		<test name="iperf">/home/kheib/git/github/senty/senty/tests/ip/iperf/test_sanity.xml</test>
+	</package>
+	<package name="rdmacm">
+		<test name="rping">/home/kheib/git/github/senty/senty/tests/rdmacm/rping/test_sanity.xml</test>
+		<test name="ucmatose">/home/kheib/git/github/senty/senty/tests/rdmacm/ucmatose/test_sanity.xml</test>
+		<test name="udaddy">/home/kheib/git/github/senty/senty/tests/rdmacm/udaddy/test_sanity.xml</test>
+		<test name="mckey">/home/kheib/git/github/senty/senty/tests/rdmacm/mckey/test_sanity.xml</test>
+	</package>
+	<package name="rdma">
+		<test name="rc_pingpong">/home/kheib/git/github/senty/senty/tests/rdma/ibv_rc_pingpong/test_sanity.xml</test>
+		<test name="uc_pingpong">/home/kheib/git/github/senty/senty/tests/rdma/ibv_uc_pingpong/test_sanity.xml</test>
+		<test name="ud_pingpong">/home/kheib/git/github/senty/senty/tests/rdma/ibv_ud_pingpong/test_sanity.xml</test>
+		<test name="srq_pingpong">/home/kheib/git/github/senty/senty/tests/rdma/ibv_srq_pingpong/test_sanity.xml</test>
+	</package>
+	<package name="storage">
+		<test name="srp">/home/kheib/git/github/senty/senty/tests/storage/srp/test_sanity.xml</test>
+	</package>
+</packages>
