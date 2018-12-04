@@ -184,7 +184,6 @@ class BasicTest(object):
         except Exception as e:
             rc = 1
             traceback.print_exc()
-            self.Logger.pr_err(e)
         finally:
             signal.signal(signal.SIGTERM, signal.SIG_DFL)
         return rc
