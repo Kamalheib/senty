@@ -39,7 +39,7 @@ class RPCServer(object):
             if not self.server:
                 try:
                     self._ip = socket.gethostbyname(socket.gethostname())
-                except Exception, e:
+                except Exception as e:
                     self.Logger.pr_err("Couldn't get server IP address")
                     self.Logger.pr_err(e)
             else:
