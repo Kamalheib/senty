@@ -26,7 +26,7 @@ Kamal Heib <kamalheib1@gmail.com>
 import sys
 import socket
 from argparse import ArgumentParser
-from SimpleXMLRPCServer import SimpleXMLRPCServer
+from xmlrpc.server import SimpleXMLRPCServer
 
 from senty.utils.logger import Logger
 from senty.utils.execute import Execute
