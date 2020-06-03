@@ -1,1 +1,1 @@
-python senty/setup.py install
+python3 senty/setup.py install
