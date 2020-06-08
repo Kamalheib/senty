@@ -23,7 +23,6 @@ Contact Information:
 Kamal Heib <kamalheib1@gmail.com>
 """
 
-import commands
 import subprocess
 
 
@@ -34,7 +33,7 @@ class Execute(object):
 
     def run_command(self, command):
         self._logger.pr_dbg("run_command: command=%s" % command)
-        return commands.getstatusoutput(command)
+        return subprocess.getstatusoutput(command)
 
     def run_process(self, command):
         self._logger.pr_dbg("run_process: command=%s" % command)
