@@ -24,7 +24,7 @@ Kamal Heib <kamalheib1@gmail.com>
 """
 
 import re
-import xmlrpclib
+from xmlrpc.client import ServerProxy
 
 
 class Host(object):
@@ -58,7 +58,7 @@ class Host(object):
 
     def get_proxy_server(self):
         if not hasattr(self, "_proxy_server"):
-            self._proxy_server = xmlrpclib.ServerProxy("http://%s:%d" % (self.IP, self.Port), allow_none=True)
+            self._proxy_server = ServerProxy("http://%s:%d" % (self.IP, self.Port), allow_none=True)
         return self._proxy_server
 
     def run_command(self, command):
