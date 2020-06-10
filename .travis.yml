@@ -1,10 +1,11 @@
 language: python
 python:
-  - "2.7"
-  - "3.4"
+  - "3.5"
+  - "3.6"
+  - "3.7"
 cache: pip
 install:
   - pip install --upgrade pip
-  - sudo python senty/setup.py install
+  - sudo python3 senty/setup.py install
 script:
-  - sudo python senty/setup.py test
+  - sudo python3 senty/setup.py test
