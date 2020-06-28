@@ -36,7 +36,7 @@ class RDMAPackage(Package):
         super(RDMAPackage, self).__init__("rdma", logger, setup_file, tests)
 
     def create_tests(self):
-        for name, path in self.TestDict.iteritems():
+        for name, path in self.TestDict.items():
             if name == "uc_pingpong":
                 self.Tests.append(IBvUCPingPong(self.Logger, self.SetupFile, path))
             elif name == "ud_pingpong":

@@ -36,7 +36,7 @@ class IBvRCPingPong(TrafficTest):
     def init_tests(self):
         for case in self.Cases:
             tests = []
-            for s_dev, c_dev in self.RDMAPairs.iteritems():
+            for s_dev, c_dev in self.RDMAPairs.items():
                 for s_port in s_dev.Ports:
                     c_port = self.get_pair(s_port, c_dev.Ports)
                     for s_gid in s_port.V1GIDs:
@@ -51,7 +51,7 @@ class IBvRCPingPong(TrafficTest):
 
     def setup(self):
         super(IBvRCPingPong, self).setup()
-        for case, tests in self.caseToTests.iteritems():
+        for case, tests in self.caseToTests.items():
             [test.init() for test in tests]
         return 0
 

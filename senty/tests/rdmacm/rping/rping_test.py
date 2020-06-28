@@ -36,7 +36,7 @@ class RPingTest(TrafficTest):
     def init_tests(self):
         for case in self.Cases:
             tests = []
-            for s_interface, c_interface in self.Pairs.iteritems():
+            for s_interface, c_interface in self.Pairs.items():
                 for address in s_interface.Addresses:
                     addr = self.get_pair(address, s_interface.Addresses)
                     tests.append(RPing(self.Logger, self.Server, self.Client, addr.IP, addr.IsIPv6,
@@ -45,7 +45,7 @@ class RPingTest(TrafficTest):
 
     def setup(self):
         super(RPingTest, self).setup()
-        for case, tests in self.caseToTests.iteritems():
+        for case, tests in self.caseToTests.items():
             [test.init() for test in tests]
         return 0
 
@@ -61,7 +61,7 @@ class RPingTest(TrafficTest):
     def teardown(self):
         rcs = [0]
         super(RPingTest, self).teardown()
-        for case, tests in self.caseToTests.iteritems():
+        for case, tests in self.caseToTests.items():
             for test in tests:
                 rcs += [test.restore()]
         return sum(rcs)

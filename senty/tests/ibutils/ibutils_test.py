@@ -48,7 +48,7 @@ class IBUtilsTest(BasicTest):
     def setup(self):
         super(IBUtilsTest, self).setup()
         self.init_tests()
-        for case, tests in self.caseToTests.iteritems():
+        for case, tests in self.caseToTests.items():
             [test.init() for test in tests]
         return 0
 

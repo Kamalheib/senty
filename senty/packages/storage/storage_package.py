@@ -32,7 +32,7 @@ class StoragePackage(Package):
         super(StoragePackage, self).__init__("storage", logger, setup_file, tests)
 
     def create_tests(self):
-        for name, path in self.TestDict.iteritems():
+        for name, path in self.TestDict.items():
             if name == "srp":
                 self.Tests.append(SRPTest(self.Logger, self.SetupFile, path))
             else:

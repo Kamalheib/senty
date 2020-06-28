@@ -34,7 +34,7 @@ class IPPackage(Package):
         super(IPPackage, self).__init__("ip", logger, setup_file, tests)
 
     def create_tests(self):
-        for name, path in self.TestDict.iteritems():
+        for name, path in self.TestDict.items():
             if name == "ping":
                 self.Tests.append(PingTest(self.Logger, self.SetupFile, path))
             elif name == "iperf":

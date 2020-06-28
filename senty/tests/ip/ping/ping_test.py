@@ -37,7 +37,7 @@ class PingTest(TrafficTest):
     def init_tests(self):
         for case in self.Cases:
             tests = []
-            for s_interface, c_interface in self.Pairs.iteritems():
+            for s_interface, c_interface in self.Pairs.items():
                 for s_addr in s_interface.Addresses:
                     c_addr = self.get_pair(s_addr, c_interface.Addresses)
                     tests.append(Ping(self.Logger, self.Server, c_addr.IP, c_addr.IsIPv6, case.ServerArgs))
@@ -45,7 +45,7 @@ class PingTest(TrafficTest):
 
     def setup(self):
         super(PingTest, self).setup()
-        for case, tests in self.caseToTests.iteritems():
+        for case, tests in self.caseToTests.items():
             [test.init() for test in tests]
         return 0
 

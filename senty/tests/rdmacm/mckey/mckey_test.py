@@ -36,7 +36,7 @@ class MCkeyTest(TrafficTest):
     def init_tests(self):
         for case in self.Cases:
             tests = []
-            for s_interface, c_interface in self.Pairs.iteritems():
+            for s_interface, c_interface in self.Pairs.items():
                 for s_addr in s_interface.Addresses:
                     c_addr = self.get_pair(s_addr, c_interface.Addresses)
                     tests.append(MCkey(self.Logger, self.Server, self.Client, s_addr.IP, c_addr.IP, s_addr.IsIPv6, case.ServerArgs, case.ClientArgs))
@@ -44,7 +44,7 @@ class MCkeyTest(TrafficTest):
 
     def setup(self):
         super(MCkeyTest, self).setup()
-        for case, tests in self.caseToTests.iteritems():
+        for case, tests in self.caseToTests.items():
             [test.init() for test in tests]
         return 0
 
@@ -60,7 +60,7 @@ class MCkeyTest(TrafficTest):
     def teardown(self):
         rcs = [0]
         super(MCkeyTest, self).teardown()
-        for case, tests in self.caseToTests.iteritems():
+        for case, tests in self.caseToTests.items():
             for test in tests:
                 rcs += [test.restore()]
         return sum(rcs)

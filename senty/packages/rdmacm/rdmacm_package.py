@@ -35,7 +35,7 @@ class RDMACMPackage(Package):
         super(RDMACMPackage, self).__init__("rdmacm", logger, setup_file, tests)
 
     def create_tests(self):
-        for name, path in self.TestDict.iteritems():
+        for name, path in self.TestDict.items():
             if name == "rping":
                 self.Tests.append(RPingTest(self.Logger, self.SetupFile, path))
             elif name == "mckey":
