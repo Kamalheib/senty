@@ -35,14 +35,14 @@ class TrafficTest(BasicTest):
         super(TrafficTest, self).__init__(self.__class__.__name__, logger, setup_file, test_file)
 
     def get_server(self):
-        return filter(lambda h: h.ID == 'h1', self.Hosts)[0]
+        return list(filter(lambda h: h.ID == 'h1', self.Hosts))[0]
 
     def get_client(self):
-        return filter(lambda h: h.ID == 'h2', self.Hosts)[0]
+        return list(filter(lambda h: h.ID == 'h2', self.Hosts))[0]
 
     @staticmethod
     def get_pair(item, collection):
-        return filter(lambda i: item.ID == i.ID, collection)[0]
+        return list(filter(lambda i: item.ID == i.ID, collection))[0]
 
     def get_pairs(self):
         if not hasattr(self, '_pairs'):
