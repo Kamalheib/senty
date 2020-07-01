@@ -36,15 +36,15 @@ class Iperf(Traffic):
 
     def get_server_command(self):
         if self._is_ipv6:
-            return "iperf %s -s -V" % self._server_args
+            return "iperf3 %s -s -V" % self._server_args
         else:
-            return "iperf %s -s" % self._server_args
+            return "iperf3 %s -s" % self._server_args
 
     def get_client_command(self):
         if self._is_ipv6:
-            return "iperf -V %s -c %s" % (self._client_args, self._ip)
+            return "iperf3 -V %s -c %s" % (self._client_args, self._ip)
         else:
-            return "iperf %s -c %s" % (self._client_args, self._ip)
+            return "iperf3 %s -c %s" % (self._client_args, self._ip)
 
     def init(self):
         self.Logger.pr_dbg('--------=== Initialization stage - [ %s ] ===--------' % self.__class__.__name__)
